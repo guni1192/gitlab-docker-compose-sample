@@ -1,0 +1,16 @@
+version: '2'
+services:
+  gitlab:
+    hostname: guniGitLab
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    ports:
+      - '8000:80'
+      - '8022:22'
+      - '8443:443'
+    environment:
+      - GITLAB_SSH_PORT=22
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/data:/var/opt/gitlab'
